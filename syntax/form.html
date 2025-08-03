@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>Form registrasi :</h3>
+    <h3 contenteditable="">Form registrasi :</h3>
     <form action="">
         <table>
             <tr>
@@ -51,6 +51,26 @@
             <tr>
                 <td><input type="submit" value="Simpan"></td>
                 <td><input type="reset" value="Reset"></td>
+            </tr>
+            <tr>
+                <td><label for="tanggal">Tanggal Lahir : </label></td>
+                <td><input type="date" name="tanggal" id="tanggal"></td>
+            </tr>
+            <tr>
+                <td><label for="bulan">Bulan : </label></td>
+                <td><input type="month" name="bulan" id="bulan"></td>
+            </tr>
+            <tr>
+                <td><label for="week">Week : </label></td>
+                <td><input type="week" name="week" id="week"></td>
+            </tr>
+            <tr>
+                <td><label for="time"></label>Waktu : </td>
+                <td><input type="time" name="time" id="time"></td>
+            </tr>
+            <tr>
+                <td><label for="Waktu-lokal">Waktu Lokal : </label></td>
+                <td><input type="datetime-local" name="datetime" id="Waktu-lokal"></td>
             </tr>
         </table>
     </form>
