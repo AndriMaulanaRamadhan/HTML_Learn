@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        input:valid {
+            border: 2px solid green;
+        }
+        input:invalid {
+            border: 2px solid red;
+        }
+        input:required:valid {
+            background-color: #d4edda;
+        }
+    </style>
 </head>
 <body>
     <h3 contenteditable="">Form registrasi :</h3>
-    <form action="">
+    <form action="" method="get" autocomplete="off" oninvalid="alert('Isi form dengan benar!');" oninput="this.setCustomValidity('')" onsubmit="alert('Form berhasil dikirim!')">
         <table>
             <tr>
                 <td><label for="first-name">Nama Pertama : </label></td>
-                <td><input type="text" id="first-name"></td>
+                <td><input type="text" id="first-name" autofocus required minlength="3" maxlength="6"></td>
             </tr>
             <tr>
                 <td><label for="last-name">Nama Belakang : </label></td>
@@ -24,6 +35,34 @@
             <tr>
                 <td><label for="password">Password : </label></td>
                 <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email : </label></td>
+                <td><input type="email" name="email" id="email"></td>
+            </tr>
+            <tr>
+                <td><label for="phone">No. Telepon : </label></td>
+                <td><input type="tel" name="phone" id="phone"></td>
+            </tr>
+            <tr>
+                <td><label for="website">URL : </label></td>
+                <td><input type="url" name="website" id="website"></td>
+            </tr>
+            <tr>
+                <td><label for="number">Umur : </label></td>
+                <td><input type="number" name="umur" id="number" min="10" max="100" step="5"></td>
+            </tr>
+            <tr>
+                <td><label for="slider">Range gaji : </label></td>
+                <td>
+                    <span class="awal">1000</span>
+                    <input type="range" name="gaji" id="slider" min="1000" max="1000000" step="1000">
+                    <span class="akhir">1000000</span>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="color">Warna : </label></td>
+                <td><input type="color" name="warna" id="color"></td>
             </tr>
             <tr>
                 <td><label for="jk">Jenis Kelamin : </label></td>
@@ -72,7 +111,25 @@
                 <td><label for="Waktu-lokal">Waktu Lokal : </label></td>
                 <td><input type="datetime-local" name="datetime" id="Waktu-lokal"></td>
             </tr>
+            <tr>
+                <td><label for="kodepos">Kode Pos : </label></td>
+                <td><input type="text" name="pos" id="kodepos" pattern="1[0-9]{4}"></td>
+            </tr>
         </table>
     </form>
+
+    <script>
+        const slider = document.querySelector('#slider');
+        const awal = document.querySelector('.awal');
+        const akhir = document.querySelector('.akhir');
+        slider.addEventListener('input', function() {
+            akhir.textContent = slider.value;
+        });
+
+        const warnaInput = document.querySelector('#color');
+        warnaInput.addEventListener('input', function() {
+            document.body.style.backgroundColor = warnaInput.value;
+        });
+    </script>
 </body>
 </html>
