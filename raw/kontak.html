@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontak - Yu-Gi-Oh! Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero-small">
+    <h1>Hubungi Kami</h1>
+    <p>Ada pertanyaan atau saran? Kirim pesanmu ke kami!</p>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="test.html">Beranda</a></li>
+      <li><a href="kartu.html">Kartu</a></li>
+      <li><a href="deck.html">Deck</a></li>
+      <li><a href="kontak.html" class="active">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="section contact-section">
+      <div class="contact-container">
+        <form class="contact-form" action="#" method="post">
+          <h2>Formulir Kontak</h2>
+          <label for="name">Nama:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Pesan:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit" class="btn-primary">Kirim Pesan</button>
+        </form>
+
+        <div class="contact-info">
+          <h2>Informasi Kontak</h2>
+          <p><strong>Email:</strong> yugioh.library@example.com</p>
+          <p><strong>Instagram:</strong> <a href="#">@yugioh.library</a></p>
+          <p><strong>Discord:</strong> YuGiOhLibrary#1234</p>
+          <p><strong>Alamat:</strong> Duel Academy Tower, Domino City</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yu-Gi-Oh! Library. Semua hak dilindungi.</p>
+  </footer>
+</body>
+</html>

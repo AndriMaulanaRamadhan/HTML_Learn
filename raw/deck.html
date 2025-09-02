@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekomendasi Deck - Yu-Gi-Oh! Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero-small">
+    <h1>Rekomendasi Deck Yu-Gi-Oh!</h1>
+    <p>Temukan deck terbaik sesuai gaya duelmu.</p>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="test.html">Beranda</a></li>
+      <li><a href="kartu.html">Kartu</a></li>
+      <li><a href="deck.html" class="active">Deck</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="section deck-filters">
+      <h2>Filter Berdasarkan Tipe</h2>
+      <div class="filters">
+        <button class="filter-btn" data-type="all">Semua</button>
+        <button class="filter-btn" data-type="control">Control</button>
+        <button class="filter-btn" data-type="fusion">Fusion</button>
+        <button class="filter-btn" data-type="beatdown">Beatdown</button>
+        <button class="filter-btn" data-type="exodia">Exodia</button>
+      </div>
+    </section>
+
+    <section class="section decks" id="deckContainer">
+      <!-- Deck cards injected by JS -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yu-Gi-Oh! Library. Semua hak dilindungi.</p>
+  </footer>
+
+  <script>
+    const decks = [
+      {
+        name: "Dark Magician Control",
+        type: "control",
+        image: "https://images.ygoprodeck.com/images/cards/46986414.jpg",
+        description: "Deck klasik yang mengandalkan Dark Magician dan kontrol penuh lewat spell/trap."
+      },
+      {
+        name: "Blue-Eyes Fusion",
+        type: "fusion",
+        image: "https://images.ygoprodeck.com/images/cards/89631139.jpg",
+        description: "Deck ofensif dengan Blue-Eyes dan fusion support seperti Neo Blue-Eyes Ultimate Dragon."
+      },
+      {
+        name: "Red-Eyes Beatdown",
+        type: "beatdown",
+        image: "https://images.ygoprodeck.com/images/cards/74677422.jpg",
+        description: "Strategi agresif berbasis Red-Eyes yang menekan lawan sejak awal."
+      },
+      {
+        name: "Exodia OTK",
+        type: "exodia",
+        image: "https://images.ygoprodeck.com/images/cards/33396948.jpg",
+        description: "Deck bertahan untuk mengumpulkan kelima bagian Exodia dan menang instan."
+      },
+      {
+        name: "Elemental HERO Fusion",
+        type: "fusion",
+        image: "https://images.ygoprodeck.com/images/cards/20721928.jpg",
+        description: "Fusion deck cepat dan fleksibel dengan berbagai kombinasi Elemental HERO."
+      },
+      {
+        name: "Stall Control",
+        type: "control",
+        image: "https://images.ygoprodeck.com/images/cards/70368879.jpg",
+        description: "Deck yang fokus pada pertahanan dan mengulur waktu hingga lawan kehabisan sumber daya."
+      }
+    ];
+
+    const container = document.getElementById("deckContainer");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    function renderDecks(filterType = "all") {
+      container.innerHTML = "";
+      const filtered = filterType === "all" ? decks : decks.filter(deck => deck.type === filterType);
+      filtered.forEach(deck => {
+        const card = document.createElement("div");
+        card.className = "deck-card";
+        card.innerHTML = `
+          <img src="${deck.image}" alt="${deck.name}">
+          <div class="deck-info">
+            <h3>${deck.name}</h3>
+            <p>${deck.description}</p>
+            <span class="deck-type">${deck.type.toUpperCase()}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.getAttribute("data-type");
+        renderDecks(type);
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    window.addEventListener("DOMContentLoaded", () => renderDecks());
+  </script>
+</body>
+</html>

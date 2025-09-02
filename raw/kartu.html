@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galeri Kartu - Yu‑Gi‑Oh! Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero-small">
+    <h1>Galeri Kartu Yu‑Gi‑Oh!</h1>
+    <p>Jelajahi 200 kartu favoritmu secara dinamis!</p>
+  </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="test.html">Beranda</a></li>
+      <li><a href="kartu.html" class="active">Kartu</a></li>
+      <li><a href="deck.html">Deck</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="section gallery">
+      <h2>Galeri Dinamis (200 Kartu)</h2>
+      <div id="cardsContainer" class="cards"></div>
+      <button id="loadMoreBtn" class="btn-secondary">Muat Lebih Banyak</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yu‑Gi‑Oh! Library.</p>
+  </footer>
+
+  <script>
+    const container = document.getElementById('cardsContainer');
+    const loadBtn = document.getElementById('loadMoreBtn');
+    let offset = 0, limit = 50;
+    const maxCards = 200;
+
+    async function fetchCards() {
+      try {
+        const res = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=${limit}&offset=${offset}`);
+        if (!res.ok) throw new Error('Gagal mengambil data');
+        const json = await res.json();
+        return json.data || [];
+      } catch (error) {
+        alert('Terjadi kesalahan saat mengambil data. Silakan coba lagi.');
+        console.error(error);
+        return [];
+      }
+    }
+
+    function renderCards(cards) {
+      cards.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <img src="${c.card_images[0]?.image_url_small || ''}" alt="${c.name}" loading="lazy">
+          <p title="${c.name}">${c.name}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function loadCards() {
+      loadBtn.disabled = true;
+      loadBtn.textContent = 'Memuat...';
+
+      const cards = await fetchCards();
+
+      if (cards.length > 0) {
+        renderCards(cards);
+        offset += limit;
+      }
+
+      if (offset >= maxCards || cards.length < limit) {
+        loadBtn.style.display = 'none';
+      } else {
+        loadBtn.disabled = false;
+        loadBtn.textContent = 'Muat Lebih Banyak';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadCards);
+    loadBtn.addEventListener('click', loadCards);
+  </script>
+</body>
+</html>

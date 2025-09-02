@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yu-Gi-Oh! Library</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header / Hero -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>Yu-Gi-Oh! Library</h1>
+      <p>Selamat datang di perpustakaan duel terlengkap!</p>
+      <a href="kartu.html" class="btn-primary">Lihat Koleksi Kartu</a>
+    </div>
+  </header>
+
+  <!-- Navigasi -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="test.html">Beranda</a></li>
+      <li><a href="kartu.html">Kartu</a></li>
+      <li><a href="deck.html">Deck</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- Konten Utama -->
+  <main>
+    <!-- Tentang -->
+    <section class="section about">
+      <h2>Apa itu Yu-Gi-Oh! Library?</h2>
+      <p>Yu-Gi-Oh! Library adalah tempat di mana duelists sejati bisa mengeksplorasi dunia kartu, strategi deck, dan sejarah duel yang legendaris.</p>
+    </section>
+
+    <!-- Fitur Unggulan -->
+    <section class="section features">
+      <h2>Fitur Unggulan</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>📚 Galeri Kartu</h3>
+          <p>Jelajahi ribuan kartu dari berbagai era Yu-Gi-Oh!</p>
+        </div>
+        <div class="feature-card">
+          <h3>🧠 Strategi Deck</h3>
+          <p>Pelajari kombinasi kartu terbaik untuk mendominasi duel.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💬 Komunitas</h3>
+          <p>Terhubung dengan duelists lain dan berbagi tips!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kartu Populer -->
+    <section class="section gallery">
+      <h2>Kartu Populer</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.ygoprodeck.com/images/cards/46986414.jpg" alt="Dark Magician">
+          <p>Dark Magician</p>
+        </div>
+        <div class="card">
+          <img src="https://images.ygoprodeck.com/images/cards/89631139.jpg" alt="Blue-Eyes White Dragon">
+          <p>Blue-Eyes White Dragon</p>
+        </div>
+        <div class="card">
+          <img src="https://images.ygoprodeck.com/images/cards/74677422.jpg" alt="Red-Eyes Black Dragon">
+          <p>Red-Eyes Black Dragon</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Yu-Gi-Oh! Library. Dibuat dengan ❤️ oleh Duelist Enthusiasts.</p>
+  </footer>
+  <!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Kembali ke Atas">↑</button>
+
+<!-- JavaScript -->
+<script>
+  // Tombol kembali ke atas muncul saat scroll
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.onscroll = function () {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+
+  // Scroll halus ke atas
+  scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Tampilkan waktu saat ini di footer
+  window.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector("footer");
+    const now = new Date();
+    const waktu = now.toLocaleString("id-ID", {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    const waktuElem = document.createElement("p");
+    waktuElem.style.fontSize = "0.8em";
+    waktuElem.textContent = `Sekarang: ${waktu}`;
+    footer.appendChild(waktuElem);
+  });
+</script>
+
+</body>
+</html>
