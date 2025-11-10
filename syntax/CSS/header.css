@@ -1,0 +1,21 @@
+.logo {
+  background: left / cover
+    url("img/wolf.png");
+  display: flex;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  font:
+    bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script",
+    fantasy;
+  color: blue;
+  text-shadow: #000 2px 2px 0.2rem;
+}
+
+header > h1 {
+  margin-bottom: 0;
+}
+
+header > time {
+  font: italic 0.7rem sans-serif;
+}
